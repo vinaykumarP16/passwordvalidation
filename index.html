@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Password Validation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/18fc5b7198.js" crossorigin="anonymous"></script>
+	<link rel="shortcut icon" type="image/ico" href="./favicon.ico">
+</head>
+<body>
+	<div  style=" text-align:center">
+		<h1 style="color: #fff ">PaSSword validation check</h1>
+		<br>
+		<div style="border:1px solid blue">
+			<h2 style="color: red">Requirements: </h2>
+		<h2>password length must be 8 character </h2>
+		<h2>atleast 1 number</h2>
+		<h2>atleast one uppercase</h2>
+		<h2>atleast one loweer case</h2>
+		<h2>not allowed ` | ~ | *</h2>
+		</div>
+		<div class="form">
+		<p id="demo"></p>
+
+		
+		password :<input type="password" id="pass1" size="8" maxlength="16"/>
+		<input type="button" value="validate" onclick="newone()"></input><br>
+		re-enter password: <input type="password" id="pass2" size="8" maxlength="16"/> <br>
+		<button id="valid" onclick="valid()">check match</button>
+		<p id="status"></p>
+		</div>
+	</div>
+<script type="text/javascript">
+	newone=function (validate) {
+		var str=document.getElementById('pass1').value;
+		if (str.length<8) {
+			document.getElementById('demo').innerHTML="password length should be more than 8 character ";
+			document.getElementById('demo').style.color="red";
+			return("too_short");
+		}else if(str.search(/[0-9]/)==-1){
+			document.getElementById('demo').innerHTML="atleast contain a number ";
+			document.getElementById('demo').style.color="red";
+			return("no_number");
+		}else if(str.search(/[a-z]/)==-1){
+			document.getElementById('demo').innerHTML="atleast one lowercase alphabet ";
+			document.getElementById('demo').style.color="red";
+			return("no_lower");
+		}else if(str.search(/[A-Z]/)==-1){
+			document.getElementById('demo').innerHTML="atleast one uppercase alphabet ";
+			document.getElementById('demo').style.color="red";
+			return("no_upper");
+		}else if(str.search(/[!\@\#\$\%\^\&\(\)\_\+\.\,\;\:]/)==-1){
+			document.getElementById('demo').innerHTML="atleast one special character alphabet not allowed ` | ~ | * ";
+			document.getElementById('demo').style.color="red";
+			return("no_special");
+		}
+			document.getElementById('demo').innerHTML="successsfull";
+			document.getElementById('demo').style.color="green";
+			return("ok");
+		}
+
+		function valid(){
+		var new2 = document.getElementById("pass1").value;
+
+		var new1 = document.getElementById("pass2").value;
+		
+		if (new2==new1) {
+			document.getElementById('status').innerHTML="matched";
+			document.getElementById('status').style.color="green";
+		}
+		else{
+			document.getElementById('status').innerHTML="not matched";
+			document.getElementById('status').style.color="red";
+		}
+	}
+	
+</script>
+</body>
+</html>
